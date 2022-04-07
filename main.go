@@ -18,7 +18,8 @@ func main() {
 		log.Fatal("DB Connection Error")
 	}
 	fmt.Println("Database Connect Successfully")
-	// db.AutoMigrate()
+	db.AutoMigrate(&user.User{})
+
 	userRepository := user.NewRepository(db)
 	userService := user.NewServiceUser(userRepository)
 	userHandler := handler.NewUserHandler(userService)
